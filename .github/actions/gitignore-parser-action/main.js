@@ -10,3 +10,4 @@ async function run() {
     core.setFailed(error);
   }
 }
+run();
