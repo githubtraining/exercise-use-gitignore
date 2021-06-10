@@ -42,7 +42,6 @@ module.exports = () => {
       };
     }
   } catch (error) {
-    console.log(error);
     return {
       reports: [
         {
@@ -50,7 +49,7 @@ module.exports = () => {
           isCorrect: false,
           display_type: "actions",
           level: "fatal",
-          msg: "",
+          msg: "Error",
           error: {
             expected: "",
             got: "An internal error occured.  Please open an issue at: https://github.com/githubtraining/exercise-use-gitignore and let us know!  Thank you",
