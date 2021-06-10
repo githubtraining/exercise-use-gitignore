@@ -49,8 +49,6 @@ Use these to help you!
 Resources specific to this exercise:
 
 - [Pattern format for .gitignore - git Docs]
-- [Encrypted secrets - GitHub Docs]
-- [Workflow syntax for GitHub Actions - GitHub Docs]
 
 <!-- - Add further resources for the learner -->
 
