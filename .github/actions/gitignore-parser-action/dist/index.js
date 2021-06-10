@@ -186,7 +186,7 @@ module.exports = () => {
             isCorrect: false,
             display_type: "actions",
             level: "warning",
-            msg: "",
+            msg: "Incorrect solution",
             error: {
               expected: ".env, artifacts/, z* to exist in the .gitignore file",
               got: `You are missing ${results.join()}`,
