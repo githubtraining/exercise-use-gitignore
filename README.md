@@ -1,6 +1,6 @@
 # Welcome to the Use .gitignore exercise!
 
-This is an exercise to check your knowledge on using a `.gitignore` file. It is automatically graded via a workflow once you have completed the instructions.
+This exercise checks your knowledge on using a `.gitignore` file. It is automatically graded via a workflow once you have completed the instructions.
 
 ## About this exercise
 
@@ -28,7 +28,10 @@ Please complete the instructions below:
 
 Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the **Actions** tab, and see the most recent run on the **Grading** workflow. <!-- specify expected Looking Glass display_type --><!-- specific place to look -->
 
-![](https://user-images.githubusercontent.com/6351798/119396166-c0736580-bc91-11eb-8bd8-02abddbcf50a.png)
+Below is an example of an incorrect solution and the feedback provided in the **Grading results:** 
+
+![Screen Shot 2021-06-10 at 12 44 21 PM](https://user-images.githubusercontent.com/6351798/121580870-7822aa00-c9ea-11eb-855e-f839852566c6.png)
+
 
 See _[Viewing workflow run history]_ if you need assistance.
 
@@ -36,7 +39,7 @@ See _[Viewing workflow run history]_ if you need assistance.
 
 If you are stuck with a step in the exercise or the grading workflow does not automatically run after you complete the instructions, run the troubleshooter: in the **Actions** tab select the **Grading workflow**, click **Run workflow**, select the appropriate branch, and click the **Run workflow** button.
 
-![](https://user-images.githubusercontent.com/6351798/119911013-b82b5c80-bf15-11eb-8feb-f2f838262f78.png)
+![Screen Shot 2021-06-10 at 12 59 28 PM](https://user-images.githubusercontent.com/6351798/121582006-bd93a700-c9eb-11eb-9576-9ec644b8f701.png)
 
 The troubleshooter will either display useful information to help you understand what you might have done wrong in your exercise or redirect you to the documentation relevant to your exercise to help you out.
 
