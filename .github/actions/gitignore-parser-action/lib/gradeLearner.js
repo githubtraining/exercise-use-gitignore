@@ -8,7 +8,6 @@ module.exports = () => {
     const results = answers.filter((i) => {
       if (!contents.includes(i)) return i;
     });
-    console.log(results);
     if (results.length === 0) {
       return {
         reports: [
@@ -36,13 +35,14 @@ module.exports = () => {
             msg: "",
             error: {
               expected: ".env, artifacts/, z* to exist in the .gitignore file",
-              got: `${results.join()}`,
+              got: `You are missing ${results.join()}`,
             },
           },
         ],
       };
     }
   } catch (error) {
+    console.log(error);
     return {
       reports: [
         {
