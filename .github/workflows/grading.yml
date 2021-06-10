@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Grade scheduled events activity
+      - name: Grade gitignore activity
         id: events
         uses: ./.github/actions/gitignore-parser-action
 
-      - name: Troubleshooting info for grading
+      - name: Grading results
         uses: githubtraining/looking-glass-action@v0.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
