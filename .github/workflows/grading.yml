@@ -16,7 +16,7 @@ jobs:
         uses: ./.github/actions/gitignore-parser-action
 
       - name: Grading results
-        uses: githubtraining/looking-glass-action@v0.1.0
+        uses: githubtraining/looking-glass-action@v0.2.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           feedback: ${{ steps.events.outputs.reports }}
