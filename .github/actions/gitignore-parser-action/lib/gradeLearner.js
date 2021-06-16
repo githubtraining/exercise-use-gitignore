@@ -2,7 +2,7 @@ const fs = require("fs");
 module.exports = () => {
   const gitingnore = `${process.env.GITHUB_WORKSPACE}/.gitignore`;
 
-  const answers = ["z*", ".env", "artifacts/"];
+  const answers = ["z*", ".env", "/artifacts/"];
   const contents = fs.readFileSync(gitingnore, "utf8").split("\n");
   try {
     const results = answers.filter((i) => {
@@ -34,7 +34,7 @@ module.exports = () => {
             level: "warning",
             msg: "Incorrect solution",
             error: {
-              expected: ".env, artifacts/, z* to exist in the .gitignore file",
+              expected: ".env, /artifacts/, z* to exist in the .gitignore file",
               got: `You are missing ${results.join()}`,
             },
           },

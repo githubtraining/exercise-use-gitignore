@@ -1,57 +1,97 @@
 module.exports =
-/******/ (function(modules, runtime) { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	__webpack_require__.ab = __dirname + "/";
-/******/
-/******/ 	// the startup function
-/******/ 	function startup() {
-/******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(948);
-/******/ 	};
-/******/
-/******/ 	// run startup
-/******/ 	return startup();
-/******/ })
-/************************************************************************/
-/******/ ({
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
-/***/ 87:
-/***/ (function(module) {
+/***/ 953:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = require("os");
+const fs = __nccwpck_require__(747);
+module.exports = () => {
+  const gitingnore = `${process.env.GITHUB_WORKSPACE}/.gitignore`;
+
+  const answers = ["z*", ".env", "/artifacts/"];
+  const contents = fs.readFileSync(gitingnore, "utf8").split("\n");
+  try {
+    const results = answers.filter((i) => {
+      if (!contents.includes(i)) return i;
+    });
+    if (results.length === 0) {
+      return {
+        reports: [
+          {
+            filename: ".gitignore",
+            isCorrect: true,
+            display_type: "actions",
+            level: "info",
+            msg: "Great job!  You have sucessfully configured the .gitignore file for this repository",
+            error: {
+              expected: "",
+              got: "",
+            },
+          },
+        ],
+      };
+    } else {
+      return {
+        reports: [
+          {
+            filename: ".gitignore",
+            isCorrect: false,
+            display_type: "actions",
+            level: "warning",
+            msg: "Incorrect solution",
+            error: {
+              expected: ".env, /artifacts/, z* to exist in the .gitignore file",
+              got: `You are missing ${results.join()}`,
+            },
+          },
+        ],
+      };
+    }
+  } catch (error) {
+    return {
+      reports: [
+        {
+          filename: ".gitignore",
+          isCorrect: false,
+          display_type: "actions",
+          level: "fatal",
+          msg: "Error",
+          error: {
+            expected: "",
+            got: "An internal error occured.  Please open an issue at: https://github.com/githubtraining/exercise-use-gitignore and let us know!  Thank you",
+          },
+        },
+      ],
+    };
+  }
+};
+
 
 /***/ }),
 
-/***/ 203:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
+/***/ 141:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const core = __nccwpck_require__(619);
+
+const gradeLearner = __nccwpck_require__(953);
+
+async function run() {
+  try {
+    const results = gradeLearner();
+    core.setOutput("reports", results);
+  } catch (error) {
+    core.setFailed(error);
+  }
+}
+run();
+
+
+/***/ }),
+
+/***/ 183:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -74,10 +114,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issue = exports.issueCommand = void 0;
-const os = __importStar(__webpack_require__(87));
-const utils_1 = __webpack_require__(634);
+const os = __importStar(__nccwpck_require__(87));
+const utils_1 = __nccwpck_require__(91);
 /**
  * Commands
  *
@@ -149,76 +189,8 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 244:
-/***/ (function(module, __unusedexports, __webpack_require__) {
-
-const fs = __webpack_require__(747);
-module.exports = () => {
-  const gitingnore = `${process.env.GITHUB_WORKSPACE}/.gitignore`;
-
-  const answers = ["z*", ".env", "artifacts/"];
-  const contents = fs.readFileSync(gitingnore, "utf8").split("\n");
-  try {
-    const results = answers.filter((i) => {
-      if (!contents.includes(i)) return i;
-    });
-    if (results.length === 0) {
-      return {
-        reports: [
-          {
-            filename: ".gitignore",
-            isCorrect: true,
-            display_type: "actions",
-            level: "info",
-            msg: "Great job!  You have sucessfully configured the .gitignore file for this repository",
-            error: {
-              expected: "",
-              got: "",
-            },
-          },
-        ],
-      };
-    } else {
-      return {
-        reports: [
-          {
-            filename: ".gitignore",
-            isCorrect: false,
-            display_type: "actions",
-            level: "warning",
-            msg: "Incorrect solution",
-            error: {
-              expected: ".env, artifacts/, z* to exist in the .gitignore file",
-              got: `You are missing ${results.join()}`,
-            },
-          },
-        ],
-      };
-    }
-  } catch (error) {
-    return {
-      reports: [
-        {
-          filename: ".gitignore",
-          isCorrect: false,
-          display_type: "actions",
-          level: "fatal",
-          msg: "Error",
-          error: {
-            expected: "",
-            got: "An internal error occured.  Please open an issue at: https://github.com/githubtraining/exercise-use-gitignore and let us know!  Thank you",
-          },
-        },
-      ],
-    };
-  }
-};
-
-
-/***/ }),
-
-/***/ 418:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
+/***/ 619:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -250,13 +222,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __webpack_require__(203);
-const file_command_1 = __webpack_require__(814);
-const utils_1 = __webpack_require__(634);
-const os = __importStar(__webpack_require__(87));
-const path = __importStar(__webpack_require__(622));
+const command_1 = __nccwpck_require__(183);
+const file_command_1 = __nccwpck_require__(939);
+const utils_1 = __nccwpck_require__(91);
+const os = __importStar(__nccwpck_require__(87));
+const path = __importStar(__nccwpck_require__(622));
 /**
  * The code to exit an action
  */
@@ -518,49 +490,8 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 622:
-/***/ (function(module) {
-
-module.exports = require("path");
-
-/***/ }),
-
-/***/ 634:
-/***/ (function(__unusedmodule, exports) {
-
-"use strict";
-
-// We use any as a valid input type
-/* eslint-disable @typescript-eslint/no-explicit-any */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.toCommandValue = void 0;
-/**
- * Sanitizes an input into a string so it can be passed into issueCommand safely
- * @param input input to sanitize into a string
- */
-function toCommandValue(input) {
-    if (input === null || input === undefined) {
-        return '';
-    }
-    else if (typeof input === 'string' || input instanceof String) {
-        return input;
-    }
-    return JSON.stringify(input);
-}
-exports.toCommandValue = toCommandValue;
-//# sourceMappingURL=utils.js.map
-
-/***/ }),
-
-/***/ 747:
-/***/ (function(module) {
-
-module.exports = require("fs");
-
-/***/ }),
-
-/***/ 814:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
+/***/ 939:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -584,13 +515,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issueCommand = void 0;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fs = __importStar(__webpack_require__(747));
-const os = __importStar(__webpack_require__(87));
-const utils_1 = __webpack_require__(634);
+const fs = __importStar(__nccwpck_require__(747));
+const os = __importStar(__nccwpck_require__(87));
+const utils_1 = __nccwpck_require__(91);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -608,24 +539,95 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 948:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
+/***/ 91:
+/***/ ((__unused_webpack_module, exports) => {
 
-const core = __webpack_require__(418);
+"use strict";
 
-const gradeLearner = __webpack_require__(244);
-
-async function run() {
-  try {
-    const results = gradeLearner();
-    core.setOutput("reports", results);
-  } catch (error) {
-    core.setFailed(error);
-  }
+// We use any as a valid input type
+/* eslint-disable @typescript-eslint/no-explicit-any */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.toCommandValue = void 0;
+/**
+ * Sanitizes an input into a string so it can be passed into issueCommand safely
+ * @param input input to sanitize into a string
+ */
+function toCommandValue(input) {
+    if (input === null || input === undefined) {
+        return '';
+    }
+    else if (typeof input === 'string' || input instanceof String) {
+        return input;
+    }
+    return JSON.stringify(input);
 }
-run();
+exports.toCommandValue = toCommandValue;
+//# sourceMappingURL=utils.js.map
 
+/***/ }),
+
+/***/ 747:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");;
+
+/***/ }),
+
+/***/ 87:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("os");;
+
+/***/ }),
+
+/***/ 622:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("path");;
 
 /***/ })
 
-/******/ });
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __nccwpck_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		if(__webpack_module_cache__[moduleId]) {
+/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		var threw = true;
+/******/ 		try {
+/******/ 			__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nccwpck_require__);
+/******/ 			threw = false;
+/******/ 		} finally {
+/******/ 			if(threw) delete __webpack_module_cache__[moduleId];
+/******/ 		}
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat */
+/******/ 	
+/******/ 	__nccwpck_require__.ab = __dirname + "/";/************************************************************************/
+/******/ 	// module exports must be returned from runtime so entry inlining is disabled
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	return __nccwpck_require__(141);
+/******/ })()
+;
