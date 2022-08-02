@@ -1,1 +1,10 @@
 node_modules/
+
+# Ignora todos los archivos que comienzan con la letra z
+[Zz].*
+
+#Ignora un archivo llamado .env
+*.env
+
+#Ignora un directorio de nivel superior llamado artifacts
+artifacts
