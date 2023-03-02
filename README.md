@@ -18,7 +18,7 @@ Please complete the instructions below:
 
 1. Create your own copy of this repository by using the [Use this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) button.
 2. Edit the `.gitignore` file at the root of the repository so that it meets the following conditions:
-   - Ignores all files starting with the letter `z`.
+   - Ignores all files starting with a lowercase `z`.
    - Ignores a file called `.env`.
    - Ignores a top-level directory named `artifacts`.
 
