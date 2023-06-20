@@ -4,6 +4,25 @@ on:
     paths:
       - ".gitignore"
   workflow_dispatch:
+  # User-specific files - Ignore all files ending in ".suo"
+*.suo
+
+# Mono auto generated files - Ignore all files starting with "mono_crash."
+mono_crash.*
+
+# Build results - Ignore all files in these folders found at any folder depth
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# Root config folder - Ignore this directory at the root due to leading slash
+# Removing the slash would ignore "config" directories at all depths 
+/config
+
+# Ignore intermediate JS build files produced during TypeScript build at any 
+# folder depth under /Web/TypeScript. This won't ignore JS files elsewhere. 
+/Web/TypeScript/**/*.js
 
 jobs:
   grade-learner:
