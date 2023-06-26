@@ -1,1 +1,6 @@
-node_modules/
+git ignore ".env"
+*.env
+git ignore ".z"
+*.z
+git ingore ". artifacts"
+*. artifacts 
